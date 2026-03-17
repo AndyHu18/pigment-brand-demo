@@ -703,11 +703,48 @@ a {
 }
 
 /* ---- FLOATING LINE ---- */
-.floating-line {
+.floating-line-wrap {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.floating-line-label {
+  position: relative;
+  background: rgba(45, 41, 38, 0.92);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  height: 28px;
+  overflow: hidden;
+}
+.floating-line-label .label-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  transform: translate(-50%, 8px);
+}
+.floating-line-label .label-text.active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.floating-line {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -1266,15 +1303,23 @@ a {
   .stat-num {
     font-size: 32px;
   }
+  .floating-line-wrap {
+    bottom: 16px;
+    right: 16px;
+    gap: 6px;
+  }
+  .floating-line-label {
+    font-size: 11px;
+    padding: 5px 10px;
+    height: 24px;
+  }
   .floating-line {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
   .floating-line svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   .cta-content h2 {
     font-size: 26px;
