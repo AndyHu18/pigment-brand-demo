@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLOOM 品牌官網建站方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Sans TC", sans-serif;
+        background: #faf8f5;
+        color: #2d2926;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(135deg, #2d2926 0%, #3d3632 100%);
+        color: #faf8f5;
+        padding: 48px 24px 40px;
+        text-align: center;
+      }
+      .header-badge {
+        display: inline-block;
+        background: rgba(183, 110, 121, 0.2);
+        border: 1px solid rgba(183, 110, 121, 0.4);
+        color: #e8b4bc;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        padding: 4px 16px;
+        border-radius: 20px;
+        margin-bottom: 16px;
+      }
+      .header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: 0.02em;
+      }
+      .header p {
+        font-size: 15px;
+        color: #b0a8a2;
+        font-weight: 300;
+      }
+
+      /* Container */
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Demo Section */
+      .demo-section {
+        padding: 32px 0 24px;
+        text-align: center;
+      }
+      .demo-section p {
+        font-size: 14px;
+        color: #8c7e78;
+        margin-bottom: 12px;
+      }
+      .demo-link {
+        display: inline-block;
+        background: #b76e79;
+        color: white;
+        text-decoration: none;
+        padding: 10px 28px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background 0.3s;
+      }
+      .demo-link:hover {
+        background: #a05d67;
+      }
+
+      /* Divider */
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #d4c8c0,
+          transparent
+        );
+        margin: 0 auto;
+        max-width: 400px;
+      }
+
+      /* Section Title */
+      .section-title {
+        text-align: center;
+        padding: 36px 0 8px;
+      }
+      .section-title h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #2d2926;
+        margin-bottom: 4px;
+      }
+      .section-title p {
+        font-size: 13px;
+        color: #8c7e78;
+      }
+
+      /* Plan Cards */
+      .plans {
+        padding: 24px 0 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .plan-card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px 24px;
+        border: 2px solid #e8e0da;
+        position: relative;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .plan-card:hover {
+        border-color: #c9a96e;
+        box-shadow: 0 8px 32px rgba(201, 169, 110, 0.12);
+      }
+
+      .plan-card.recommended {
+        border-color: #b76e79;
+        box-shadow: 0 8px 32px rgba(183, 110, 121, 0.15);
+      }
+
+      .plan-badge {
+        position: absolute;
+        top: -12px;
+        left: 24px;
+        background: #b76e79;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 14px;
+        border-radius: 12px;
+        letter-spacing: 0.05em;
+      }
+
+      .plan-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+      .plan-name {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .plan-price {
+        text-align: right;
+      }
+      .plan-price .amount {
+        font-size: 24px;
+        font-weight: 700;
+        color: #b76e79;
+      }
+      .plan-price .unit {
+        font-size: 12px;
+        color: #8c7e78;
+        display: block;
+      }
+
+      .plan-desc {
+        font-size: 14px;
+        color: #5a524e;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #f0ebe7;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+      .plan-features li {
+        font-size: 13px;
+        color: #5a524e;
+        padding: 5px 0;
+        padding-left: 24px;
+        position: relative;
+      }
+      .plan-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #7baf6e;
+        font-weight: 700;
+      }
+      .plan-features li.con::before {
+        content: "✕";
+        color: #c87070;
+      }
+      .plan-features li.neutral::before {
+        content: "—";
+        color: #b0a8a2;
+      }
+
+      .plan-yearly {
+        background: #f8f5f0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .plan-yearly .label {
+        font-size: 12px;
+        color: #8c7e78;
+      }
+      .plan-yearly .value {
+        font-size: 14px;
+        font-weight: 700;
+        color: #2d2926;
+      }
+      .plan-yearly .value.free {
+        color: #7baf6e;
+      }
+
+      /* Comparison Table */
+      .compare-section {
+        padding: 0 0 36px;
+      }
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      }
+      .compare-table thead th {
+        background: #2d2926;
+        color: #faf8f5;
+        padding: 12px 10px;
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+      }
+      .compare-table thead th:first-child {
+        text-align: left;
+        padding-left: 16px;
+      }
+      .compare-table tbody td {
+        padding: 10px;
+        border-bottom: 1px solid #f0ebe7;
+        text-align: center;
+        color: #5a524e;
+      }
+      .compare-table tbody td:first-child {
+        text-align: left;
+        padding-left: 16px;
+        font-weight: 500;
+        color: #2d2926;
+      }
+      .compare-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .emoji-good {
+        color: #7baf6e;
+      }
+      .emoji-ok {
+        color: #c9a96e;
+      }
+      .emoji-bad {
+        color: #c87070;
+      }
+
+      /* FAQ */
+      .faq-section {
+        padding: 0 0 36px;
+      }
+      .faq-item {
+        background: white;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      }
+      .faq-q {
+        font-size: 14px;
+        font-weight: 700;
+        color: #2d2926;
+        margin-bottom: 8px;
+      }
+      .faq-a {
+        font-size: 13px;
+        color: #5a524e;
+        line-height: 1.9;
+      }
+
+      /* CTA */
+      .cta-section {
+        background: linear-gradient(135deg, #2d2926 0%, #3d3632 100%);
+        padding: 40px 24px;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .cta-section h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #faf8f5;
+        margin-bottom: 8px;
+      }
+      .cta-section p {
+        font-size: 13px;
+        color: #b0a8a2;
+        margin-bottom: 24px;
+      }
+      .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .cta-btn {
+        display: block;
+        padding: 14px 24px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        text-align: center;
+        transition: transform 0.2s;
+      }
+      .cta-btn:hover {
+        transform: translateY(-1px);
+      }
+      .cta-btn.primary {
+        background: #06c755;
+        color: white;
+      }
+      .cta-btn.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #faf8f5;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 24px;
+        font-size: 11px;
+        color: #b0a8a2;
+      }
+
+      /* Responsive */
+      @media (min-width: 640px) {
+        .header h1 {
+          font-size: 32px;
+        }
+        .plan-card {
+          padding: 32px 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <div class="header-badge">BLOOM 品牌官網提案</div>
+        <h1>周老師，三個方案讓您選</h1>
+        <p>根據您的需求量身打造，請挑選最適合的方案</p>
+      </div>
+    </div>
+
+    <!-- Demo -->
+    <div class="container">
+      <div class="demo-section">
+        <p>我們已經完成了網站的設計樣稿，歡迎先預覽效果</p>
+        <a
+          href="https://pigment-brand-demo.vercel.app"
+          target="_blank"
+          class="demo-link"
+          >查看網站樣稿</a
+        >
+      </div>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Plans -->
+    <div class="container">
+      <div class="section-title">
+        <h2>三個方案</h2>
+        <p>每個方案都包含目前您看到的所有設計內容</p>
+      </div>
+
+      <div class="plans">
+        <!-- Plan A -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">方案 A — 精美展示站</div>
+            <div class="plan-price">
+              <span class="amount">$35,000</span>
+              <span class="unit">一次付清</span>
+            </div>
+          </div>
+          <div class="plan-desc">
+            網站做好後直接交給您，設計精美、速度飛快。<br />
+            如果要更新作品集或改文字，跟我們說一聲就好。
+          </div>
+          <ul class="plan-features">
+            <li>完整品牌官網（首頁 + 所有區塊）</li>
+            <li>14 張 AI 專屬圖片</li>
+            <li>手機 / 平板 / 電腦 三種裝置完美顯示</li>
+            <li>品牌影片 + Podcast 播放器</li>
+            <li>浮動 LINE 按鈕（一鍵加好友）</li>
+            <li>Google 地圖 + 聯絡表單</li>
+            <li class="con">更新作品需聯繫我們處理（每次約 $500）</li>
+            <li class="con">您無法自行編輯網站內容</li>
+          </ul>
+          <div class="plan-yearly">
+            <span class="label">每年維護費</span>
+            <span class="value free">$0 免費</span>
+          </div>
+        </div>
+
+        <!-- Plan B -->
+        <div class="plan-card recommended">
+          <div class="plan-badge">最推薦</div>
+          <div class="plan-header">
+            <div class="plan-name">方案 B — 自主管理站</div>
+            <div class="plan-price">
+              <span class="amount">$42,000</span>
+              <span class="unit">一次付清</span>
+            </div>
+          </div>
+          <div class="plan-desc">
+            您可以自己登入後台，像發 IG 一樣上傳學員作品。<br />
+            只能改文字和圖片，設計不會被改壞，完全不需要懂技術。
+          </div>
+          <ul class="plan-features">
+            <li>方案 A 的所有內容</li>
+            <li><strong>作品集管理後台</strong> — 自己上傳照片、打學員名字</li>
+            <li><strong>課程資訊管理</strong> — 自己改價格、時間、人數</li>
+            <li><strong>服務項目管理</strong> — 自己新增或修改產品</li>
+            <li>安全性極高（不會被駭客攻擊）</li>
+            <li>不需要安裝任何軟體</li>
+            <li class="neutral">平台月費約 NT$700（由您支付）</li>
+          </ul>
+          <div class="plan-yearly">
+            <span class="label">每年平台費（您支付）</span>
+            <span class="value">約 $8,400 / 年</span>
+          </div>
+        </div>
+
+        <!-- Plan C -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">方案 C — WordPress 網站</div>
+            <div class="plan-price">
+              <span class="amount">$55,000</span>
+              <span class="unit">一次付清</span>
+            </div>
+          </div>
+          <div class="plan-desc">
+            使用全球最多人用的 WordPress 系統建站。<br />
+            功能最多，但需要定期維護更新以確保安全。
+          </div>
+          <ul class="plan-features">
+            <li>方案 A 的所有內容</li>
+            <li>WordPress 後台管理（功能最豐富）</li>
+            <li>可擴充部落格、預約系統等功能</li>
+            <li class="con">需定期安全更新（否則容易被駭）</li>
+            <li class="con">每月需付維護費，確保網站安全運作</li>
+            <li class="con">後台操作較複雜，需要學習</li>
+          </ul>
+          <div class="plan-yearly">
+            <span class="label">每年維護費（您支付）</span>
+            <span class="value">約 $12,000 / 年</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="container">
+      <div class="section-title">
+        <h2>一眼比較</h2>
+        <p>三個方案的核心差異</p>
+      </div>
+
+      <div class="compare-section">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>A 展示站</th>
+              <th>B 自主站</th>
+              <th>C WordPress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>建站費用</td>
+              <td>$35,000</td>
+              <td><strong>$42,000</strong></td>
+              <td>$55,000</td>
+            </tr>
+            <tr>
+              <td>每年費用</td>
+              <td class="emoji-good"><strong>$0</strong></td>
+              <td>~$8,400</td>
+              <td class="emoji-bad">~$12,000</td>
+            </tr>
+            <tr>
+              <td>自己上傳作品</td>
+              <td class="emoji-bad">不行</td>
+              <td class="emoji-good"><strong>可以</strong></td>
+              <td class="emoji-ok">可以但複雜</td>
+            </tr>
+            <tr>
+              <td>操作難度</td>
+              <td>不需操作</td>
+              <td class="emoji-good"><strong>像發 IG</strong></td>
+              <td class="emoji-bad">需要學習</td>
+            </tr>
+            <tr>
+              <td>安全性</td>
+              <td class="emoji-good">最高</td>
+              <td class="emoji-good"><strong>最高</strong></td>
+              <td class="emoji-bad">需定期顧</td>
+            </tr>
+            <tr>
+              <td>網站速度</td>
+              <td class="emoji-good">極快</td>
+              <td class="emoji-good"><strong>極快</strong></td>
+              <td class="emoji-ok">普通</td>
+            </tr>
+            <tr>
+              <td>3 年總花費</td>
+              <td class="emoji-good">$35,000</td>
+              <td>$67,200</td>
+              <td class="emoji-bad">$91,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="container">
+      <div class="section-title">
+        <h2>常見問題</h2>
+      </div>
+
+      <div class="faq-section">
+        <div class="faq-item">
+          <div class="faq-q">方案 B「自己上傳作品」到底怎麼操作？</div>
+          <div class="faq-a">
+            用手機或電腦打開後台網址 → 點「新增作品」→ 上傳照片 →
+            打上學員名字和作品說明 → 按發布。整個過程跟發一則 IG
+            貼文一樣簡單，不需要懂任何技術。我們會提供教學影片。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">選了方案 A，之後想升級成方案 B 可以嗎？</div>
+          <div class="faq-a">
+            可以。差額補齊即可升級，設計不需要重做。建議一開始就想好是否需要自己管理作品，這樣最省事。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">為什麼方案 C 最貴但不推薦？</div>
+          <div class="faq-a">
+            WordPress
+            是好系統，但它需要持續維護（就像車子需要定期保養）。如果不定期更新，網站可能會被駭客入侵。每年的維護費
+            + 安全更新是一筆持續的開銷。方案 B 不需要這些，長期更省錢也更安心。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">網站上的圖片是真的還是示意？</div>
+          <div class="faq-a">
+            目前網站上的圖片是 AI
+            生成的示意圖，用來展示設計風格。正式建站時，會替換成您提供的真實產品照片、學員作品和老師照片。如果需要，我們也可以協助拍攝或修圖。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">建站需要多久？</div>
+          <div class="faq-a">
+            方案 A：約 5-7 個工作天<br />
+            方案 B：約 7-10 個工作天<br />
+            方案 C：約 10-14 個工作天<br />
+            以上時間從您確認方案 + 提供素材後開始算。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">我需要準備什麼？</div>
+          <div class="faq-a">
+            ① 品牌 Logo（如果有的話）<br />
+            ② 您喜歡的品牌色（或沿用目前的玫瑰粉+金色）<br />
+            ③ 產品照片、學員作品照片<br />
+            ④ 課程資訊（價格、時間、人數）<br />
+            ⑤ 聯絡資訊（地址、電話、LINE ID）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="container">
+        <h2>準備好了嗎？</h2>
+        <p>選好方案後，加 LINE 告訴我們就可以開始囉</p>
+        <div class="cta-buttons">
+          <a href="https://line.me/" class="cta-btn primary"
+            >加 LINE 告訴我選哪個方案</a
+          >
+          <a
+            href="https://pigment-brand-demo.vercel.app"
+            target="_blank"
+            class="cta-btn secondary"
+            >再看一次網站樣稿</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>AI 智能大腦 — 品牌官網建站服務</p>
+      <p style="margin-top: 4px">本提案有效期限：2026 年 4 月 17 日前</p>
+    </div>
+  </body>
+</html>
