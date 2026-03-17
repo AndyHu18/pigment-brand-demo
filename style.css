@@ -718,27 +718,27 @@ a {
   background: rgba(45, 41, 38, 0.92);
   backdrop-filter: blur(8px);
   color: #fff;
-  padding: 6px 14px;
+  padding: 6px 16px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.5px;
   white-space: nowrap;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(201, 169, 110, 0.3);
-  height: 28px;
-  overflow: hidden;
+  min-width: 120px;
+  height: 30px;
+  text-align: center;
 }
 .floating-line-label .label-text {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   opacity: 0;
+  transform: translate(-50%, 4px);
   transition:
     opacity 0.5s ease,
     transform 0.5s ease;
-  transform: translate(-50%, 8px);
 }
 .floating-line-label .label-text.active {
   opacity: 1;
