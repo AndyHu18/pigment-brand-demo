@@ -122,6 +122,9 @@ a {
 .nav.scrolled .nav-toggle span {
   background: #2d2926;
 }
+.nav-toggle.active span {
+  background: #2d2926;
+}
 .nav-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -1213,6 +1216,8 @@ a {
 
   .nav-toggle {
     display: block;
+    position: relative;
+    z-index: 1001;
   }
   .nav-links {
     position: fixed;
@@ -1226,6 +1231,7 @@ a {
     gap: 20px;
     transition: right 0.3s;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
   }
   .nav-links.active {
     right: 0;
