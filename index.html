@@ -46,6 +46,86 @@
       </div>
     </section>
 
+    <!-- Audio Player - Interview -->
+    <section class="audio-player-section" id="podcast">
+      <div class="container">
+        <div class="audio-player-card">
+          <div class="audio-player-visual">
+            <div class="audio-waveform">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="audio-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <line x1="12" y1="19" x2="12" y2="23" />
+                <line x1="8" y1="23" x2="16" y2="23" />
+              </svg>
+            </div>
+          </div>
+          <div class="audio-player-info">
+            <p class="audio-label">品牌專訪</p>
+            <h3 class="audio-title">走進紋繡色料的世界 — 周子瑄老師專訪</h3>
+            <p class="audio-desc">了解我們的品牌理念、色料特色與專業課程</p>
+          </div>
+          <div class="audio-player-controls">
+            <button class="audio-play-btn" id="audioPlayBtn" aria-label="播放">
+              <svg
+                class="play-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <svg
+                class="pause-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            </button>
+            <div class="audio-progress-wrap">
+              <div class="audio-time">
+                <span id="audioCurrentTime">0:00</span>
+                <span id="audioDuration">2:34</span>
+              </div>
+              <div class="audio-progress" id="audioProgress">
+                <div class="audio-progress-bar" id="audioProgressBar"></div>
+              </div>
+            </div>
+          </div>
+          <audio
+            id="audioElement"
+            preload="metadata"
+            src="interview-final.mp3"
+          ></audio>
+        </div>
+      </div>
+    </section>
+
     <!-- Brand Story -->
     <section class="section" id="about">
       <div class="container">
@@ -70,10 +150,6 @@
               <div class="stat">
                 <span class="stat-num">50+</span>
                 <span class="stat-label">色號選擇</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">2000+</span>
-                <span class="stat-label">合作紋繡師</span>
               </div>
               <div class="stat">
                 <span class="stat-num">8</span>
@@ -144,7 +220,7 @@
         <div class="courses-grid">
           <div class="course-card reveal">
             <div class="course-img">
-              <img src="images/course.jpg" alt="紋繡基礎班" />
+              <img src="images/course-1.jpg" alt="紋繡基礎班" />
             </div>
             <div class="course-info">
               <span class="course-tag">入門推薦</span>
@@ -163,6 +239,9 @@
             </div>
           </div>
           <div class="course-card reveal">
+            <div class="course-img">
+              <img src="images/course-2.jpg" alt="進階色彩學大師班" />
+            </div>
             <div class="course-info">
               <span class="course-tag tag-alt">技術提升</span>
               <h3>進階色彩學大師班</h3>
@@ -180,6 +259,9 @@
             </div>
           </div>
           <div class="course-card reveal">
+            <div class="course-img">
+              <img src="images/course-3.jpg" alt="品牌合作培訓" />
+            </div>
             <div class="course-info">
               <span class="course-tag tag-dark">一對一</span>
               <h3>品牌合作培訓</h3>
@@ -429,6 +511,73 @@
         { threshold: 0.1 },
       );
       document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+      // Audio Player
+      const audio = document.getElementById("audioElement");
+      const playBtn = document.getElementById("audioPlayBtn");
+      const playIcon = playBtn.querySelector(".play-icon");
+      const pauseIcon = playBtn.querySelector(".pause-icon");
+      const progressBar = document.getElementById("audioProgressBar");
+      const progressWrap = document.getElementById("audioProgress");
+      const currentTimeEl = document.getElementById("audioCurrentTime");
+      const durationEl = document.getElementById("audioDuration");
+      const waveSpans = document.querySelectorAll(".audio-waveform span");
+
+      function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ":" + String(sec).padStart(2, "0");
+      }
+
+      audio.addEventListener("loadedmetadata", () => {
+        durationEl.textContent = formatTime(audio.duration);
+      });
+
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          playIcon.style.display = "none";
+          pauseIcon.style.display = "block";
+          document.querySelector(".audio-player-card").classList.add("playing");
+        } else {
+          audio.pause();
+          playIcon.style.display = "block";
+          pauseIcon.style.display = "none";
+          document
+            .querySelector(".audio-player-card")
+            .classList.remove("playing");
+        }
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = pct + "%";
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        // Animate waveform bars
+        waveSpans.forEach((span, i) => {
+          const h =
+            20 +
+            Math.sin(audio.currentTime * 3 + i * 0.8) * 15 +
+            Math.random() * 10;
+          span.style.height = audio.paused ? "8px" : h + "px";
+        });
+      });
+
+      audio.addEventListener("ended", () => {
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+        document
+          .querySelector(".audio-player-card")
+          .classList.remove("playing");
+        progressBar.style.width = "0%";
+        currentTimeEl.textContent = "0:00";
+      });
+
+      progressWrap.addEventListener("click", (e) => {
+        const rect = progressWrap.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+      });
     </script>
   </body>
 </html>
