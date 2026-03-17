@@ -38,7 +38,7 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="hero-subtitle">Professional Semi-Permanent Pigments</p>
-        <h1 class="hero-title">每一滴色彩<br />都是藝術的開始</h1>
+        <h1 class="hero-title" id="heroTitle"></h1>
         <p class="hero-desc">專業級半永久色料 ── 為紋繡師打造的極致色彩體驗</p>
         <div class="hero-actions">
           <a href="#products" class="btn btn-primary">探索產品</a>
@@ -491,11 +491,8 @@
     <!-- Floating LINE with rotating label -->
     <div class="floating-line-wrap">
       <div class="floating-line-label" id="floatingLabel">
-        <span class="label-text active">周子瑄老師</span>
-        <span class="label-text">0930-693-394</span>
-        <span class="label-text">加 LINE 諮詢</span>
-        <span class="label-text">桃園中壢</span>
-        <span class="label-text">課程報名中</span>
+        <span id="labelTypeText"></span
+        ><span class="typewriter-cursor label-cursor">|</span>
       </div>
       <a
         href="https://line.me/ti/p/"
@@ -543,6 +540,40 @@
         { threshold: 0.1 },
       );
       document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+      // Hero typewriter
+      const heroTitle = document.getElementById("heroTitle");
+      const heroLines = ["每一滴色彩", "都是藝術的開始"];
+      let lineIdx = 0,
+        charIdx = 0;
+      const cursor = document.createElement("span");
+      cursor.className = "typewriter-cursor";
+      cursor.textContent = "|";
+      heroTitle.appendChild(cursor);
+
+      function typeHero() {
+        if (lineIdx >= heroLines.length) {
+          cursor.style.animation = "blink 1s step-end infinite";
+          return;
+        }
+        const line = heroLines[lineIdx];
+        if (charIdx < line.length) {
+          if (charIdx === 0 && lineIdx > 0) {
+            heroTitle.insertBefore(document.createElement("br"), cursor);
+          }
+          heroTitle.insertBefore(
+            document.createTextNode(line[charIdx]),
+            cursor,
+          );
+          charIdx++;
+          setTimeout(typeHero, 100);
+        } else {
+          lineIdx++;
+          charIdx = 0;
+          setTimeout(typeHero, 300);
+        }
+      }
+      setTimeout(typeHero, 500);
 
       // Audio Player
       const audio = document.getElementById("audioElement");
@@ -637,16 +668,45 @@
         brandVideo.controls = true;
       });
 
-      // Floating label rotation
-      const labelTexts = document.querySelectorAll(
-        ".floating-line-label .label-text",
-      );
-      let currentLabel = 0;
-      setInterval(() => {
-        labelTexts[currentLabel].classList.remove("active");
-        currentLabel = (currentLabel + 1) % labelTexts.length;
-        labelTexts[currentLabel].classList.add("active");
-      }, 3000);
+      // Floating label typewriter
+      const labelMessages = [
+        "周子瑄老師",
+        "0930-693-394",
+        "加 LINE 諮詢",
+        "桃園中壢",
+        "課程報名中",
+      ];
+      const labelEl = document.getElementById("labelTypeText");
+      let msgIdx = 0;
+
+      function typeLabelMsg() {
+        const msg = labelMessages[msgIdx];
+        let i = 0;
+        labelEl.textContent = "";
+        const typeInterval = setInterval(() => {
+          labelEl.textContent += msg[i];
+          i++;
+          if (i >= msg.length) {
+            clearInterval(typeInterval);
+            setTimeout(eraseLabelMsg, 2000);
+          }
+        }, 80);
+      }
+
+      function eraseLabelMsg() {
+        const eraseInterval = setInterval(() => {
+          const txt = labelEl.textContent;
+          if (txt.length <= 0) {
+            clearInterval(eraseInterval);
+            msgIdx = (msgIdx + 1) % labelMessages.length;
+            setTimeout(typeLabelMsg, 300);
+          } else {
+            labelEl.textContent = txt.slice(0, -1);
+          }
+        }, 40);
+      }
+
+      setTimeout(typeLabelMsg, 1000);
     </script>
   </body>
 </html>

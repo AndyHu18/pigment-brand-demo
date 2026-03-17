@@ -714,7 +714,6 @@ a {
   gap: 8px;
 }
 .floating-line-label {
-  position: relative;
   background: rgba(45, 41, 38, 0.92);
   backdrop-filter: blur(8px);
   color: #fff;
@@ -726,24 +725,13 @@ a {
   white-space: nowrap;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(201, 169, 110, 0.3);
-  min-width: 120px;
-  height: 30px;
-  text-align: center;
+  min-width: 90px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.floating-line-label .label-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, 4px);
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-}
-.floating-line-label .label-text.active {
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
+/* label text is now driven by JS typewriter */
 .floating-line {
   width: 56px;
   height: 56px;
@@ -762,6 +750,28 @@ a {
   transform: scale(1.1);
   box-shadow: 0 6px 25px rgba(6, 199, 85, 0.5);
 }
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  color: #c9a96e;
+  font-weight: 300;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+.label-cursor {
+  color: #c9a96e;
+  font-size: 13px;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes pulse {
   0%,
   100% {
