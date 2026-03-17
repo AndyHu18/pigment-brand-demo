@@ -553,7 +553,18 @@ a {
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 40px;
+}
+.contact-map {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+.contact-map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 .contact-info p {
   color: #8c7e78;
