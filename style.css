@@ -781,12 +781,60 @@ a {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  position: relative;
 }
 
 .brand-video {
   width: 100%;
   display: block;
   background: #1a1715;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 2;
+}
+
+.video-play-overlay:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.video-play-overlay.hidden {
+  display: none;
+}
+
+.video-play-btn {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(183, 110, 121, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.video-play-btn:hover {
+  transform: scale(1.1);
+  background: rgba(183, 110, 121, 1);
+  box-shadow: 0 12px 40px rgba(183, 110, 121, 0.4);
+}
+
+.video-play-btn svg {
+  margin-left: 6px;
 }
 
 /* ---- AUDIO PLAYER ---- */
@@ -1106,6 +1154,14 @@ a {
   }
   .video-showcase {
     border-radius: 12px;
+  }
+  .video-play-btn {
+    width: 72px;
+    height: 72px;
+  }
+  .video-play-btn svg {
+    width: 48px;
+    height: 48px;
   }
 
   .nav-toggle {

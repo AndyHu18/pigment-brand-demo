@@ -209,17 +209,24 @@
         <p class="section-label center">Brand Film</p>
         <h2 class="section-title center">品牌形象影片</h2>
         <p class="section-desc center">感受 BLOOM 色料的極致質感與專業美學</p>
-        <div class="video-showcase">
-          <video
-            class="brand-video"
-            controls
-            preload="metadata"
-            poster="images/video-poster.jpg"
-            playsinline
-          >
+        <div class="video-showcase" id="videoShowcase">
+          <video class="brand-video" id="brandVideo" preload="auto" playsinline>
             <source src="brand-video.mp4" type="video/mp4" />
             您的瀏覽器不支援影片播放
           </video>
+          <div class="video-play-overlay" id="videoPlayOverlay">
+            <button class="video-play-btn" aria-label="播放影片">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                viewBox="0 0 24 24"
+                fill="#fff"
+              >
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -593,6 +600,32 @@
         const rect = progressWrap.getBoundingClientRect();
         const pct = (e.clientX - rect.left) / rect.width;
         audio.currentTime = pct * audio.duration;
+      });
+
+      // Brand Video Player
+      const brandVideo = document.getElementById("brandVideo");
+      const videoOverlay = document.getElementById("videoPlayOverlay");
+
+      videoOverlay.addEventListener("click", () => {
+        videoOverlay.classList.add("hidden");
+        brandVideo.controls = true;
+        brandVideo.play();
+      });
+
+      brandVideo.addEventListener("ended", () => {
+        videoOverlay.classList.remove("hidden");
+        brandVideo.controls = false;
+      });
+
+      brandVideo.addEventListener("pause", () => {
+        if (brandVideo.ended) return;
+        videoOverlay.classList.remove("hidden");
+        brandVideo.controls = false;
+      });
+
+      brandVideo.addEventListener("play", () => {
+        videoOverlay.classList.add("hidden");
+        brandVideo.controls = true;
       });
     </script>
   </body>
