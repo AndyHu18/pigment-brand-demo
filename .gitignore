@@ -1,0 +1,7 @@
+.vercel
+audio/
+*.wav
+*.pcm
+*.m4a
+*.py
+.claude/

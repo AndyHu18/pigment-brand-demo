@@ -770,24 +770,51 @@ a {
   }
 }
 
+/* ---- BRAND VIDEO ---- */
+.brand-video-section {
+  background: #f5f0eb;
+}
+
+.video-showcase {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.brand-video {
+  width: 100%;
+  display: block;
+  background: #1a1715;
+}
+
 /* ---- AUDIO PLAYER ---- */
 .audio-player-section {
-  padding: 0;
-  position: relative;
-  z-index: 10;
-  margin-top: -40px;
+  background: linear-gradient(135deg, #2d2926 0%, #1a1715 100%);
+}
+
+.audio-player-section .section-label {
+  color: #c9a96e;
+}
+
+.audio-player-section .section-title {
+  color: #fff;
+}
+
+.audio-player-section .section-desc {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .audio-player-card {
-  background: linear-gradient(135deg, #2d2926 0%, #1a1715 100%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(201, 169, 110, 0.15);
   border-radius: 20px;
   padding: 32px 40px;
   display: flex;
   align-items: center;
   gap: 28px;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(201, 169, 110, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   transition:
     box-shadow 0.4s ease,
     transform 0.3s ease;
@@ -824,21 +851,32 @@ a {
 
 .audio-player-visual {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 120px;
+  height: 120px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.audio-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .audio-waveform {
   position: absolute;
-  inset: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: 2px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  padding-bottom: 4px;
 }
 
 .audio-waveform span {
@@ -911,9 +949,7 @@ a {
 }
 
 .audio-icon {
-  position: relative;
-  z-index: 1;
-  color: #c9a96e;
+  display: none;
 }
 
 .audio-player-info {
@@ -1045,8 +1081,12 @@ a {
     text-align: center;
   }
   .audio-player-visual {
-    width: 56px;
-    height: 56px;
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+  }
+  .audio-cover-img {
+    border-radius: 12px;
   }
   .audio-title {
     font-size: 1rem;
@@ -1063,6 +1103,9 @@ a {
   .audio-play-btn svg {
     width: 24px;
     height: 24px;
+  }
+  .video-showcase {
+    border-radius: 12px;
   }
 
   .nav-toggle {

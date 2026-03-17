@@ -24,6 +24,7 @@
           <li><a href="#products">色料產品</a></li>
           <li><a href="#courses">課程資訊</a></li>
           <li><a href="#gallery">學員作品</a></li>
+          <li><a href="#podcast">品牌對談</a></li>
           <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
         </ul>
       </div>
@@ -42,86 +43,6 @@
         <div class="hero-actions">
           <a href="#products" class="btn btn-primary">探索產品</a>
           <a href="#courses" class="btn btn-outline">課程報名</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Audio Player - Interview -->
-    <section class="audio-player-section" id="podcast">
-      <div class="container">
-        <div class="audio-player-card">
-          <div class="audio-player-visual">
-            <div class="audio-waveform">
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="audio-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
-                />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" y1="19" x2="12" y2="23" />
-                <line x1="8" y1="23" x2="16" y2="23" />
-              </svg>
-            </div>
-          </div>
-          <div class="audio-player-info">
-            <p class="audio-label">品牌專訪</p>
-            <h3 class="audio-title">走進紋繡色料的世界 — 周子瑄老師專訪</h3>
-            <p class="audio-desc">了解我們的品牌理念、色料特色與專業課程</p>
-          </div>
-          <div class="audio-player-controls">
-            <button class="audio-play-btn" id="audioPlayBtn" aria-label="播放">
-              <svg
-                class="play-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-              <svg
-                class="pause-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="6" y="4" width="4" height="16" />
-                <rect x="14" y="4" width="4" height="16" />
-              </svg>
-            </button>
-            <div class="audio-progress-wrap">
-              <div class="audio-time">
-                <span id="audioCurrentTime">0:00</span>
-                <span id="audioDuration">2:34</span>
-              </div>
-              <div class="audio-progress" id="audioProgress">
-                <div class="audio-progress-bar" id="audioProgressBar"></div>
-              </div>
-            </div>
-          </div>
-          <audio
-            id="audioElement"
-            preload="metadata"
-            src="interview-final.mp3"
-          ></audio>
         </div>
       </div>
     </section>
@@ -278,6 +199,101 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Video -->
+    <section class="section brand-video-section" id="video">
+      <div class="container">
+        <p class="section-label center">Brand Film</p>
+        <h2 class="section-title center">品牌形象影片</h2>
+        <p class="section-desc center">感受 BLOOM 色料的極致質感與專業美學</p>
+        <div class="video-showcase">
+          <video
+            class="brand-video"
+            controls
+            preload="metadata"
+            poster="images/video-poster.jpg"
+            playsinline
+          >
+            <source src="brand-video.mp4" type="video/mp4" />
+            您的瀏覽器不支援影片播放
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audio Player - Podcast -->
+    <section class="section audio-player-section" id="podcast">
+      <div class="container">
+        <p class="section-label center">Podcast</p>
+        <h2 class="section-title center">品牌對談</h2>
+        <p class="section-desc center">
+          兩位主持人暢聊紋繡色料的世界，帶您認識周子瑄老師的品牌故事
+        </p>
+        <div class="audio-player-card">
+          <div class="audio-player-visual">
+            <img
+              src="images/interview-scene.jpg"
+              alt="品牌對談"
+              class="audio-cover-img"
+            />
+            <div class="audio-waveform">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="audio-player-info">
+            <p class="audio-label">美學新視界 Podcast</p>
+            <h3 class="audio-title">
+              走進紋繡色料的世界 — 聊聊周子瑄老師的品牌理念
+            </h3>
+            <p class="audio-desc">
+              兩位主持人深度對談，帶您了解色料特色與專業課程
+            </p>
+          </div>
+          <div class="audio-player-controls">
+            <button class="audio-play-btn" id="audioPlayBtn" aria-label="播放">
+              <svg
+                class="play-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <svg
+                class="pause-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            </button>
+            <div class="audio-progress-wrap">
+              <div class="audio-time">
+                <span id="audioCurrentTime">0:00</span>
+                <span id="audioDuration">2:26</span>
+              </div>
+              <div class="audio-progress" id="audioProgress">
+                <div class="audio-progress-bar" id="audioProgressBar"></div>
+              </div>
+            </div>
+          </div>
+          <audio
+            id="audioElement"
+            preload="metadata"
+            src="interview-final.mp3"
+          ></audio>
         </div>
       </div>
     </section>
